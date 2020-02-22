@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha256-6rXZCnFzbyZ685/fMsqoxxZz/QZwMnmwHg+SsNe+C/w=" crossorigin="anonymous"></script>
+    <script>
+      function sign() {
+        var secret = document.getElementById('secret').value;
+        var message = document.getElementById('message').value;
+        var encrypted = CryptoJS.HmacSHA384(JSON.stringify(JSON.parse(message)), secret);
+        document.getElementById('signature').value = encrypted;
+      }
+    </script>
+  </head>
+  <body style="font-family: monospace">
+    Secret<br/>
+    <input type="text" id="secret" size="200" style="width: 800px;"></input><br/><br/>
+    Message<br/>
+    <textarea id="message" rows="40" cols="150" style="width: 800px;"></textarea><br/><br/>
+    Signature<br/>
+    <input type="text" id="signature" size="200" style="width: 800px;"></input><br/><br/>
+    <input type="button" value="Sign" onclick="sign(); return false;"></input>
+  </body>
+</html>
